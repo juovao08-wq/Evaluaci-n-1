@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('aplicacion1.urls')),  # Comillas vacías para que sea la raíz http://127.0.0.1:8000/
+    path('', include('aplicacion2.urls')),
 ]
