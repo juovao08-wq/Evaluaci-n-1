@@ -16,8 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def inicio_general(request):
+    return HttpResponse("""
+        <div style="font-family: sans-serif; text-align: center; padding: 40px;">
+            <h1>Proyecto Django - Menú Principal</h1>
+            <p>Selecciona la aplicación a la que deseas acceder:</p>
+            <div style="margin-top: 20px;">
+                <a href="/app1/" style="display: inline-block; margin: 10px; padding: 12px 24px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px;">Ir a Vista 1 (Aplicación 1)</a>
+                <a href="/app2/" style="display: inline-block; margin: 10px; padding: 12px 24px; background: #0284c7; color: white; text-decoration: none; border-radius: 6px;">Ir a Vista 1 (Aplicación 2)</a>
+            </div>
+        </div>
+    """)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('aplicacion2.urls')),
+    path('', inicio_general, name='home'),
+    path('app1/', include('aplicacion1.urls')),
+    path('app2/', include('aplicacion2.urls')),
 ]
